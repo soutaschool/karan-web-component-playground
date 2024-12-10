@@ -1,19 +1,29 @@
 {
-  "name": "karan-web-component-playground",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "ts-lit-plugin": "^2.0.2",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.1"
-  },
-  "dependencies": {
-    "lit": "^3.2.1"
-  }
+	"name": "karan-web-component-playground",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"lint": "eslint 'src/**/*.{ts,js}'",
+		"lint:fix": "eslint 'src/**/*.{ts,js}' --fix",
+		"format": "prettier --write 'src/**/*.{ts,js,css,html}'"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^8.18.0",
+		"@typescript-eslint/parser": "^8.18.0",
+		"eslint": "^9.16.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-lit": "^1.15.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"prettier": "^3.4.2",
+		"ts-lit-plugin": "^2.0.2",
+		"typescript": "~5.6.2",
+		"vite": "^6.0.1"
+	},
+	"dependencies": {
+		"lit": "^3.2.1"
+	}
 }
