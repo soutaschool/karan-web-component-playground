@@ -5,6 +5,7 @@
     - [IDE plugins](#ide-plugins)
     - [Typescript configuration](#typescript-configuration)
     - [Husky configuration](#husky-configuration)
+    - [Basic color](#basic-color)
 
 ## References
 
@@ -19,3 +20,7 @@
 ### Husky configuration
 
 <https://typicode.github.io/husky/get-started.html>
+
+### Basic color
+
+<https://www.w3.org/wiki/CSS3/Color/Basic_color_keywords>

@@ -8,6 +8,10 @@
 		"declarationMap": true,
 		"experimentalDecorators": true,
 		"useDefineForClassFields": false,
+		"baseUrl": "./src",
+		"paths": {
+			"@/*": ["*"]
+		},
 		"plugins": [
 			{
 				"name": "ts-lit-plugin",
