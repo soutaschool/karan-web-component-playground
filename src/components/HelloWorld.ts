@@ -1,9 +1,12 @@
 import { commonStyles } from '@/styles/common-styles';
 import { LitElement, css, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 @customElement('hello-world')
 export class HelloWorld extends LitElement {
+  @property({ type: String }) title = '';
+  @property({ type: Number }) count = 0;
+
   static styles = [
     commonStyles,
     css`
@@ -15,6 +18,6 @@ export class HelloWorld extends LitElement {
   ];
 
   render() {
-    return html` <span class="title">Hello world</span> `;
+    return html` <span class="title">Hello ${this.title} ${this.count}</span> `;
   }
 }
