@@ -1,4 +1,4 @@
-import { commonStyles } from '@/styles/common-styles';
+import { commonStyles } from '@/styles/CommonStyles';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
