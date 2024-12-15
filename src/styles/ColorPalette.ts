@@ -1,41 +1,39 @@
-import { css } from 'lit';
+import { css } from "lit";
 
 export const colorPalette = css`
   :host {
-    /* Light Mode Colors */
     --light-basic-black: #333333;
-    --light-basic-silver: #d3d3d3;
-    --light-basic-gray: #a0a0a0;
-    --light-basic-white: #f0f0f0;
-    --light-basic-maroon: #a00000;
-    --light-basic-red: #ff6666;
-    --light-basic-purple: #a000a0;
-    --light-basic-fuchsia: #ff66ff;
-    --light-basic-green: #33cc33;
-    --light-basic-lime: #66ff66;
-    --light-basic-olive: #a0a000;
-    --light-basic-yellow: #ffff66;
-    --light-basic-navy: #333399;
-    --light-basic-blue: #6666ff;
-    --light-basic-teal: #33cccc;
-    --light-basic-aqua: #66ffff;
+    --light-basic-silver: #777777;
+    --light-basic-gray: #555555;
+    --light-basic-white: #eeeeee;
+    --light-basic-maroon: #800000;
+    --light-basic-red: #b30000;
+    --light-basic-purple: #800080;
+    --light-basic-fuchsia: #b300b3;
+    --light-basic-green: #008000;
+    --light-basic-lime: #2d7f2d;
+    --light-basic-olive: #666600;
+    --light-basic-yellow: #999900;
+    --light-basic-navy: #000080;
+    --light-basic-blue: #0000b3;
+    --light-basic-teal: #006666;
+    --light-basic-aqua: #009999;
 
-    /* Dark Mode Colors */
-    --dark-basic-black: #000000;
+    --dark-basic-black: #121212;
     --dark-basic-silver: #c0c0c0;
-    --dark-basic-gray: #808080;
-    --dark-basic-white: #f8f8f8;
-    --dark-basic-maroon: #800000;
-    --dark-basic-red: #ff0000;
-    --dark-basic-purple: #800080;
-    --dark-basic-fuchsia: #ff00ff;
-    --dark-basic-green: #008000;
-    --dark-basic-lime: #00ff00;
-    --dark-basic-olive: #808000;
-    --dark-basic-yellow: #ffff00;
-    --dark-basic-navy: #000080;
-    --dark-basic-blue: #0000ff;
-    --dark-basic-teal: #008080;
-    --dark-basic-aqua: #00ffff;
+    --dark-basic-gray: #aaaaaa;
+    --dark-basic-white: #f0f0f0;
+    --dark-basic-maroon: #ff4d4d;
+    --dark-basic-red: #ff3333;
+    --dark-basic-purple: #cc66cc;
+    --dark-basic-fuchsia: #ff66ff;
+    --dark-basic-green: #33cc33;
+    --dark-basic-lime: #66ff66;
+    --dark-basic-olive: #cccc33;
+    --dark-basic-yellow: #ffff33;
+    --dark-basic-navy: #6666ff;
+    --dark-basic-blue: #4d4dff;
+    --dark-basic-teal: #33cccc;
+    --dark-basic-aqua: #66ffff;
   }
 `;
