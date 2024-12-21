@@ -1,10 +1,10 @@
-import { commonStyles } from '@/styles/CommonStyles';
-import { LitElement, css, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { commonStyles } from "@/styles/CommonStyles";
+import { LitElement, css, html } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
-@customElement('hello-world')
+@customElement("hello-world")
 export class HelloWorld extends LitElement {
-  @property({ type: String }) title = '';
+  @property({ type: String }) title = "";
   @property({ type: Number }) count = 0;
 
   static styles = [

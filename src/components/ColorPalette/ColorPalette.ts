@@ -1,9 +1,9 @@
-import { colorPalette } from '@/styles/ColorPalette';
-import { commonStyles } from '@/styles/CommonStyles';
-import { LitElement, css, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { colorPalette } from "@/styles/ColorPalette";
+import { commonStyles } from "@/styles/CommonStyles";
+import { LitElement, css, html } from "lit";
+import { customElement } from "lit/decorators.js";
 
-@customElement('color-palette')
+@customElement("color-palette")
 export class ColorPalette extends LitElement {
   static styles = [
     commonStyles,
@@ -87,22 +87,22 @@ export class ColorPalette extends LitElement {
   ];
 
   private colors = [
-    'black',
-    'silver',
-    'gray',
-    'white',
-    'maroon',
-    'red',
-    'purple',
-    'fuchsia',
-    'green',
-    'lime',
-    'olive',
-    'yellow',
-    'navy',
-    'blue',
-    'teal',
-    'aqua',
+    "black",
+    "silver",
+    "gray",
+    "white",
+    "maroon",
+    "red",
+    "purple",
+    "fuchsia",
+    "green",
+    "lime",
+    "olive",
+    "yellow",
+    "navy",
+    "blue",
+    "teal",
+    "aqua",
   ];
 
   render() {

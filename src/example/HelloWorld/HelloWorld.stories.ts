@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import './HelloWorld';
+import type { Meta, StoryObj } from "@storybook/web-components";
+import "./HelloWorld";
 
 interface HelloWorldProps {
   title: string;
@@ -7,15 +7,15 @@ interface HelloWorldProps {
 }
 
 const meta: Meta<HelloWorldProps> = {
-  title: 'Example/HelloWorld',
-  component: 'hello-world',
-  tags: ['autodocs'],
+  title: "Example/HelloWorld",
+  component: "hello-world",
+  tags: ["autodocs"],
   argTypes: {
-    title: { control: 'text' },
-    count: { control: 'number' },
+    title: { control: "text" },
+    count: { control: "number" },
   },
   args: {
-    title: 'World',
+    title: "World",
     count: 0,
   },
 };
@@ -25,28 +25,28 @@ type Story = StoryObj<HelloWorldProps>;
 
 export const Default: Story = {
   args: {
-    title: 'World',
+    title: "World",
     count: 0,
   },
 };
 
 export const WithTitle: Story = {
   args: {
-    title: 'Storybook',
+    title: "Storybook",
     count: 0,
   },
 };
 
 export const WithCount: Story = {
   args: {
-    title: 'World',
+    title: "World",
     count: 5,
   },
 };
 
 export const WithTitleAndCount: Story = {
   args: {
-    title: 'Storybook',
+    title: "Storybook",
     count: 10,
   },
 };
