@@ -58,29 +58,28 @@ export const commonTypography = css`
     h6 {
       margin: 0;
       font-family: var(--font-family-sans);
-      font: var(--font-bold);
-      lh: var(--lh-heading);
-      color: var(--heading-color);
+      font-weight: var(--font-bold);
+      line-height: var(--lh-heading);
     }
 
     h1 {
-      font: var(--font-4xl); /* 36px */
+      font-size: var(--font-4xl); /* 36px */
     }
     h2 {
-      font: var(--font-3xl); /* 30px */
+      font-size: var(--font-3xl); /* 30px */
     }
     h3 {
-      font: var(--font-2xl); /* 24px */
+      font-size: var(--font-2xl); /* 24px */
     }
     h4 {
-      font: var(--font-xl); /* 20px */
+      font-size: var(--font-xl); /* 20px */
     }
     h5 {
-      font: var(--font-lg); /* 18px */
+      font-size: var(--font-lg); /* 18px */
     }
     h6 {
-      font: var(--font-base); /* 16px */
-      font: var(--font-medium);
+      font-size: var(--font-base); /* 16px */
+      font-weight: var(--font-medium);
     }
 
     p,
@@ -89,11 +88,8 @@ export const commonTypography = css`
     dd,
     dt {
       font-family: var(--font-family-sans);
-      font: var(--font-base);
-      font: var(--font-regular);
-      lh: var(--lh-base);
-      tracking: var(--tracking-normal);
-      color: var(--text-color);
+      line-height: var(--lh-base);
+      letter-spacing: var(--tracking-normal);
       margin: 0;
     }
 
