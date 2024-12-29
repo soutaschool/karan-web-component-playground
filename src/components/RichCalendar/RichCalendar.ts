@@ -398,7 +398,7 @@ export class RichCalendar extends LitElement {
           height: 5px;
         }
         .more-dot {
-          font-size: 7px;
+          display: none;
         }
         .info-panel {
           padding: var(--spacing-1);
