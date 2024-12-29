@@ -1,5 +1,5 @@
 import { colorPalette } from "@/styles/ColorPalette.ts";
-import { commonTypography } from "@/styles/Typography";
+import { typography } from "@/styles/Typography";
 import { LitElement, css, html, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 
@@ -33,7 +33,7 @@ export class RichCalendar extends LitElement {
   @state() private panelVisible = false;
 
   static styles = [
-    commonTypography,
+    typography,
     colorPalette,
     css`
       :host {

@@ -1,6 +1,6 @@
 import { css } from "lit";
 
-export const commonTypography = css`
+export const typography = css`
   :host {
     /* font family */
     --font-family-sans: "Noto Sans JP", system-ui, -apple-system,

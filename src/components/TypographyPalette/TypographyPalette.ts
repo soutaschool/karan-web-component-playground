@@ -1,12 +1,12 @@
-import { commonTypography } from "@/styles/Typography";
 import { colorPalette } from "@/styles/ColorPalette";
+import { typography } from "@/styles/Typography";
 import { LitElement, css, html } from "lit";
 import { customElement } from "lit/decorators.js";
 
 @customElement("typography-palette")
 export class TypographyPalette extends LitElement {
   static styles = [
-    commonTypography,
+    typography,
     colorPalette,
     css`
       .palette {

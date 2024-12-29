@@ -1,5 +1,5 @@
 import { colorPalette } from "@/styles/ColorPalette";
-import { commonTypography } from "@/styles/Typography";
+import { typography } from "@/styles/Typography";
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
@@ -10,7 +10,7 @@ export class HelloWorld extends LitElement {
 
   static styles = [
     colorPalette,
-    commonTypography,
+    typography,
     css`
       .title {
         color: var(--basic-red);

@@ -1,10 +1,10 @@
 import { colorPalette } from "@/styles/ColorPalette";
-import { commonTypography } from "@/styles/Typography";
+import { typography } from "@/styles/Typography";
 import { LitElement, css, html } from "lit";
 
 export class SampleColor extends LitElement {
   static styles = [
-    commonTypography,
+    typography,
     colorPalette,
     css`
       .hello-container {
