@@ -1,5 +1,5 @@
 import { colorPalette } from "@/styles/ColorPalette.ts";
-import { commonStyles } from "@/styles/CommonStyles.ts";
+import { commonTypography } from "@/styles/Typography";
 import { LitElement, css, html, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 
@@ -33,47 +33,41 @@ export class RichCalendar extends LitElement {
   @state() private panelVisible = false;
 
   static styles = [
-    commonStyles,
+    commonTypography,
     colorPalette,
     css`
       :host {
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-family: system-ui, sans-serif;
+        font-family: var(--font-family-sans);
         position: relative;
-        padding: var(--space-md);
-        border-radius: var(--space-sm);
+        padding: var(--spacing-4); /* 16px */
+        border-radius: var(--border-radius-base, 4px);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-        /* サイズ */
         --cell-size: 48px;
-
-        /* セマンティックカラー定義: Light mode (デフォルト) */
-        --color-text-base: var(--light-basic-black);
-        --color-background-base: var(--light-basic-white);
-        --color-accent: var(--light-basic-aqua);
-        --color-accent-hover: var(
-          --light-basic-fuchsia
-        ); /* 例: hoverで微妙に変えるなど */
-        --color-border: var(--light-basic-gray);
+        --color-text-base: var(--basic-black);
+        --color-background-base: var(--basic-white);
+        --color-accent: var(--basic-aqua);
+        --color-accent-hover: var(--basic-fuchsia);
+        --color-border: var(--basic-gray);
         --color-weekend-bg: #f7f7f7;
-        --color-weekend-text: var(--light-basic-black);
-        --color-event: var(--light-basic-red);
-        --color-event-bg: var(--light-basic-lime);
-        --color-today-border: var(--light-basic-aqua);
-        --color-today-bg: var(--light-basic-aqua);
-        --color-tooltip-bg: var(--light-basic-white);
-        --color-tooltip-border: var(--light-basic-gray);
-        --color-tooltip-text: var(--light-basic-black);
+        --color-weekend-text: var(--basic-black);
+        --color-event: var(--basic-red);
+        --color-event-bg: var(--basic-lime);
+        --color-today-border: var(--basic-aqua);
+        --color-today-bg: var(--basic-aqua);
+        --color-tooltip-bg: var(--basic-white);
+        --color-tooltip-border: var(--basic-gray);
+        --color-tooltip-text: var(--basic-black);
         --color-tooltip-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-
-        /* トランジション・レイアウト */
         --transition-fast: 0.2s;
         --transition-medium: 0.3s;
         --border-radius-base: 4px;
+      }
 
-        @media (prefers-color-scheme: dark) {
+      @media (prefers-color-scheme: dark) {
+        :host {
           --color-text-base: var(--dark-basic-white);
           --color-background-base: var(--dark-basic-black);
           --color-accent: var(--dark-basic-aqua);
@@ -92,23 +86,22 @@ export class RichCalendar extends LitElement {
         }
       }
 
-      /* Header */
       .header {
         display: flex;
         align-items: center;
         width: 100%;
         max-width: 360px;
-        margin-bottom: var(--space-md);
+        margin-bottom: var(--spacing-4); /* 16px */
         justify-content: space-between;
         color: var(--color-text-base);
-        font-size: var(--font-size-base);
+        font-size: var(--font-base);
       }
 
       .title {
         flex: 1;
         text-align: center;
-        font-size: var(--font-size-lg);
-        font-weight: bold;
+        font-size: var(--font-lg);
+        font-weight: var(--font-bold);
         position: relative;
       }
 
@@ -119,7 +112,7 @@ export class RichCalendar extends LitElement {
         height: 2px;
         background: var(--color-accent);
         margin: 0 auto;
-        margin-top: var(--space-xs);
+        margin-top: var(--spacing-1); /* 4px */
         border-radius: var(--border-radius-base);
       }
 
@@ -127,8 +120,8 @@ export class RichCalendar extends LitElement {
         background: none;
         border: none;
         cursor: pointer;
-        font-size: var(--font-size-base);
-        padding: var(--space-xs) var(--space-sm);
+        font-size: var(--font-base);
+        padding: var(--spacing-1) var(--spacing-2); /* 4px 8px */
         transition: color var(--transition-fast) ease;
         color: var(--color-text-base);
         border-radius: var(--border-radius-base);
@@ -143,7 +136,7 @@ export class RichCalendar extends LitElement {
       .nav-button.today-button {
         background: var(--color-accent);
         color: var(--color-text-base);
-        margin-left: var(--space-sm);
+        margin-left: var(--spacing-2); /* 8px */
         transition:
           background var(--transition-fast) ease,
           color var(--transition-fast) ease;
@@ -155,22 +148,21 @@ export class RichCalendar extends LitElement {
         outline: none;
       }
 
-      /* Weekdays */
       .weekdays {
         display: grid;
         grid-template-columns: repeat(7, var(--cell-size));
-        gap: var(--space-xs);
-        margin-bottom: var(--space-sm);
-        font-size: var(--font-size-sm);
+        gap: var(--spacing-1); /* 4px */
+        margin-bottom: var(--spacing-2); /* 8px */
+        font-size: var(--font-sm);
         text-align: center;
-        font-weight: bold;
+        font-weight: var(--font-bold);
         width: 100%;
         max-width: 360px;
         color: var(--color-text-base);
       }
 
       .weekdays .day {
-        padding: var(--space-xs);
+        padding: var(--spacing-1); /* 4px */
         border-radius: var(--border-radius-base);
       }
 
@@ -180,17 +172,16 @@ export class RichCalendar extends LitElement {
         color: var(--color-weekend-text);
       }
 
-      /* Dates */
       .dates {
         display: grid;
         grid-template-columns: repeat(7, var(--cell-size));
-        gap: var(--space-xs);
-        font-size: var(--font-size-sm);
+        gap: var(--spacing-1); /* 4px */
+        font-size: var(--font-sm);
         transition:
           transform var(--transition-medium) ease,
           opacity var(--transition-medium) ease;
         overflow: visible;
-        margin-bottom: var(--space-md);
+        margin-bottom: var(--spacing-4); /* 16px */
         width: 100%;
         max-width: 360px;
       }
@@ -199,23 +190,24 @@ export class RichCalendar extends LitElement {
         transform: translateX(100%);
         opacity: 0;
       }
+
       .dates.entered {
         transform: translateX(0);
         opacity: 1;
       }
+
       .dates.exiting {
         transform: translateX(-100%);
         opacity: 0;
       }
 
-      /* Date Cell */
       .date-cell {
         position: relative;
         text-align: center;
         border: 1px solid var(--color-border);
         background: var(--color-background-base);
         cursor: pointer;
-        padding: var(--space-xs);
+        padding: var(--spacing-1); /* 4px */
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -261,8 +253,8 @@ export class RichCalendar extends LitElement {
       }
 
       .day-num {
-        font-weight: bold;
-        font-size: var(--font-size-sm);
+        font-weight: var(--font-bold);
+        font-size: var(--font-sm);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -272,7 +264,7 @@ export class RichCalendar extends LitElement {
       .has-events .day-num::after {
         content: "🗓";
         font-size: 12px;
-        margin-left: var(--space-xs);
+        margin-left: var(--spacing-1); /* 4px */
         vertical-align: middle;
       }
 
@@ -280,6 +272,7 @@ export class RichCalendar extends LitElement {
         display: flex;
         justify-content: center;
         margin-top: 2px;
+        flex-wrap: wrap;
       }
 
       .event-dot {
@@ -287,7 +280,7 @@ export class RichCalendar extends LitElement {
         height: 6px;
         background-color: var(--color-event);
         border-radius: 50%;
-        margin: 0 1px;
+        margin: 0 1px 1px 0;
       }
 
       .more-dot {
@@ -301,16 +294,16 @@ export class RichCalendar extends LitElement {
       }
 
       .event-preview {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-sm);
         color: var(--color-event);
-        margin-top: var(--space-xs);
+        margin-top: var(--spacing-1); /* 4px */
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
 
       .more {
-        font-weight: bold;
+        font-weight: var(--font-bold);
         color: var(--color-text-base);
         white-space: nowrap;
         overflow: hidden;
@@ -318,18 +311,17 @@ export class RichCalendar extends LitElement {
         display: inline;
       }
 
-      /* Info Panel (Tooltip) */
       .info-panel {
         width: 100%;
         max-width: 360px;
         background: var(--color-tooltip-bg);
         border: 1px solid var(--color-tooltip-border);
         box-shadow: var(--color-tooltip-shadow);
-        padding: var(--tooltip-padding, var(--space-sm));
-        font-size: var(--tooltip-font-size, var(--font-size-sm));
+        padding: var(--spacing-2); /* 8px */
+        font-size: var(--font-sm);
         border-radius: var(--border-radius-base);
         color: var(--color-tooltip-text);
-        margin-top: var(--space-md);
+        margin-top: var(--spacing-4); /* 16px */
         display: none;
         transition: opacity var(--transition-fast) ease;
         position: relative;
@@ -341,11 +333,11 @@ export class RichCalendar extends LitElement {
 
       .info-panel h3 {
         margin-top: 0;
-        font-size: var(--font-size-sm);
-        font-weight: bold;
+        font-size: var(--font-sm);
+        font-weight: var(--font-bold);
         border-bottom: 1px solid var(--color-tooltip-border);
-        padding-bottom: var(--space-xs);
-        margin-bottom: var(--space-sm);
+        padding-bottom: var(--spacing-1); /* 4px */
+        margin-bottom: var(--spacing-2); /* 8px */
         text-align: left;
         color: var(--color-tooltip-text);
       }
@@ -358,22 +350,22 @@ export class RichCalendar extends LitElement {
         max-height: 100px;
         overflow-y: auto;
         line-height: 1.5;
-        font-size: var(--font-size-sm);
+        font-size: var(--font-sm);
       }
 
       .info-panel li {
-        margin-bottom: var(--space-xs);
+        margin-bottom: var(--spacing-1); /* 4px */
         color: var(--color-tooltip-text);
       }
 
       .info-panel .close-button {
         position: absolute;
-        top: var(--space-xs);
-        right: var(--space-xs);
+        top: var(--spacing-1); /*4px*/
+        right: var(--spacing-1); /*4px*/
         background: none;
         border: none;
         cursor: pointer;
-        font-size: var(--font-size-lg);
+        font-size: var(--font-lg);
         color: var(--color-tooltip-text);
       }
 
@@ -382,28 +374,24 @@ export class RichCalendar extends LitElement {
         color: var(--color-accent);
       }
 
-      /* Responsive */
-      @media (max-width: 400px) {
+      @media (max-width: 600px) {
         :host {
           --cell-size: 36px;
         }
         .header {
-          font-size: var(--font-size-sm);
+          font-size: var(--font-sm);
         }
         .weekdays {
-          font-size: 10px;
+          font-size: var(--font-xs);
         }
         .day-num {
-          font-size: var(--font-size-sm);
+          font-size: var(--font-xs);
         }
         .event-preview {
-          font-size: 10px;
+          display: none;
         }
-        .info-panel h3 {
-          font-size: var(--font-size-sm);
-        }
-        .info-panel ul {
-          font-size: var(--font-size-sm);
+        .event-indicators {
+          margin-top: 1px;
         }
         .event-dot {
           width: 5px;
@@ -412,6 +400,30 @@ export class RichCalendar extends LitElement {
         .more-dot {
           font-size: 7px;
         }
+        .info-panel {
+          padding: var(--spacing-1);
+          font-size: var(--font-xs);
+        }
+        .info-panel h3 {
+          font-size: var(--font-xs);
+          padding-bottom: var(--spacing-1); /* 4px */
+          margin-bottom: var(--spacing-1); /* 4px */
+        }
+        .info-panel ul {
+          padding-left: 16px;
+          max-height: 80px;
+        }
+        .no-events {
+          text-align: center;
+          color: var(--color-tooltip-text);
+          font-size: var(--font-xs);
+        }
+        .day-num {
+          text-overflow: clip;
+        }
+        .has-events .day-num::after {
+          content: "";
+        }
       }
 
       @media (min-width: 800px) {
@@ -419,23 +431,36 @@ export class RichCalendar extends LitElement {
           --cell-size: 60px;
         }
         .header {
-          font-size: var(--font-size-lg);
+          font-size: var(--font-lg);
         }
         .weekdays {
-          font-size: var(--font-size-base);
+          font-size: var(--font-base);
         }
         .day-num {
-          font-size: var(--font-size-base);
+          font-size: var(--font-base);
         }
         .event-preview {
-          font-size: var(--font-size-base);
+          font-size: var(--font-base);
         }
         .info-panel h3 {
-          font-size: var(--font-size-base);
+          font-size: var(--font-base);
         }
         .info-panel ul {
-          font-size: var(--font-size-sm);
+          font-size: var(--font-sm);
         }
+        .event-dot {
+          width: 6px;
+          height: 6px;
+        }
+        .more-dot {
+          font-size: 8px;
+        }
+      }
+
+      .no-events {
+        text-align: center;
+        color: var(--color-tooltip-text);
+        font-size: var(--font-xs);
       }
     `,
   ];
@@ -533,11 +558,7 @@ export class RichCalendar extends LitElement {
                   ${this.selectedYear}年${this.selectedMonth}月${this
                     .selectedDay}日
                 </h3>
-                <p
-                  style="text-align:center; color:var(--tooltip-color); font-size:12px;"
-                >
-                  イベントはありません
-                </p>
+                <p class="no-events">イベントはありません</p>
               `
           : nothing}
       </div>
@@ -708,5 +729,11 @@ export class RichCalendar extends LitElement {
     if (changedProperties.has("year") || changedProperties.has("month")) {
       this.requestUpdate();
     }
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "rich-calendar": RichCalendar;
   }
 }
