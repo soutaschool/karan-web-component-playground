@@ -1,28 +1,29 @@
 import { colorPalette } from "@/styles/ColorPalette";
-import { commonStyles } from "@/styles/CommonStyles";
+import { commonTypography } from "@/styles/Typography";
 import { LitElement, css, html } from "lit";
 
 export class SampleColor extends LitElement {
   static styles = [
-    commonStyles,
+    commonTypography,
     colorPalette,
     css`
       .hello-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: var(--space-lg);
-        gap: var(--space-md);
+        padding: var(--spacing-4);
+        gap: var(--spacing-2);
       }
 
       .hello-box {
-        padding: var(--space-md);
+        padding: var(--spacing-2);
         border-radius: 8px;
         color: var(--basic-white);
-        font-size: 1.5rem;
         text-align: center;
         width: 200px;
-      }
+        font-family: var(--font-family-sans);
+        font-weight: var(--font-bold);
+        line-height: var(--lh-base);
 
       .light {
         background-color: var(--light-basic-blue);
@@ -45,7 +46,7 @@ export class SampleColor extends LitElement {
       @media (max-width: 600px) {
         .hello-box {
           width: 150px;
-          font-size: 1.2rem;
+          font-size: var(--font-sm);
         }
       }
     `,
