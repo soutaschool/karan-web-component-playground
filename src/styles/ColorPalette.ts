@@ -2,6 +2,25 @@ import { css } from "lit";
 
 export const colorPalette = css`
   :host {
+    /* basic theme */
+    --basic-black: #000000;
+    --basic-silver: #c0c0c0;
+    --basic-gray: #808080;
+    --basic-white: #ffffff;
+    --basic-maroon: #800000;
+    --basic-red: #ff0000;
+    --basic-purple: #800080;
+    --basic-fuchsia: #ff00ff;
+    --basic-green: #008000;
+    --basic-lime: #00ff00;
+    --basic-olive: #808000;
+    --basic-yellow: #ffff00;
+    --basic-navy: #000080;
+    --basic-blue: #0000ff;
+    --basic-teal: #008080;
+    --basic-aqua: #00ffff;
+
+    /* light theme */
     --light-basic-black: #333333;
     --light-basic-silver: #777777;
     --light-basic-gray: #555555;
@@ -19,6 +38,7 @@ export const colorPalette = css`
     --light-basic-teal: #006666;
     --light-basic-aqua: #009999;
 
+    /* dark theme */
     --dark-basic-black: #121212;
     --dark-basic-silver: #c0c0c0;
     --dark-basic-gray: #aaaaaa;

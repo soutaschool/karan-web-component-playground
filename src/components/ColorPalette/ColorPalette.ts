@@ -1,35 +1,35 @@
 import { colorPalette } from "@/styles/ColorPalette";
-import { commonStyles } from "@/styles/CommonStyles";
+import { commonTypography } from "@/styles/Typography";
 import { LitElement, css, html } from "lit";
 import { customElement } from "lit/decorators.js";
 
 @customElement("color-palette")
 export class ColorPalette extends LitElement {
   static styles = [
-    commonStyles,
+    commonTypography,
     colorPalette,
     css`
       .palette {
         width: 100%;
-        padding: var(--space-lg);
+        padding: var(--spacing-8);
         background-color: var(--basic-white);
         color: var(--basic-black);
         box-sizing: border-box;
-        overflow-x: auto; /* Enable horizontal scrolling on small screens */
+        overflow-x: auto;
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 600px; /* Ensure table maintains minimum width */
+        min-width: 600px;
       }
 
       th,
       td {
-        padding: var(--space-sm);
+        padding: var(--spacing-2);
         text-align: center;
         border: 1px solid #ddd;
-        position: relative; /* Needed for tooltip positioning */
+        position: relative;
       }
 
       th {
@@ -48,7 +48,7 @@ export class ColorPalette extends LitElement {
           box-shadow 0.3s ease;
         cursor: pointer;
         margin: 0 auto;
-        position: relative; /* For tooltip */
+        position: relative;
       }
 
       .color-box:hover,
@@ -58,30 +58,29 @@ export class ColorPalette extends LitElement {
       }
 
       .usage {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-sm);
         color: var(--basic-gray);
-        padding: var(--space-xs);
+        padding: var(--spacing-1);
         max-width: 200px;
         margin: 0 auto;
       }
 
-      /* Tooltip Styles */
       .tooltip {
         visibility: hidden;
         width: max-content;
-        background-color: var(--basic-black);
-        color: var(--basic-white);
+        background-color: var(--basic-white);
+        color: var(--basic-black);
         text-align: center;
         border-radius: 4px;
         padding: 4px 8px;
         position: absolute;
         z-index: 1;
-        bottom: 125%; /* Position above the color box */
+        bottom: 125%;
         left: 50%;
         transform: translateX(-50%);
         opacity: 0;
         transition: opacity 0.3s;
-        font-size: var(--font-size-xs);
+        font-size: var(--font-xs);
         pointer-events: none;
       }
 
@@ -94,15 +93,14 @@ export class ColorPalette extends LitElement {
       .tooltip::after {
         content: "";
         position: absolute;
-        top: 100%; /* Arrow at the bottom of the tooltip */
+        top: 100%;
         left: 50%;
         transform: translateX(-50%);
         border-width: 5px;
         border-style: solid;
-        border-color: var(--basic-black) transparent transparent transparent;
+        border-color: var(--basic-white) transparent transparent transparent;
       }
 
-      /* Dark Theme Styles */
       @media (prefers-color-scheme: dark) {
         .palette {
           background-color: var(--dark-basic-black);
@@ -131,7 +129,6 @@ export class ColorPalette extends LitElement {
         }
       }
 
-      /* Responsive Styles */
       @media (max-width: 800px) {
         .color-box {
           max-width: 80px;
@@ -147,26 +144,21 @@ export class ColorPalette extends LitElement {
         }
         th,
         td {
-          padding: var(--space-xs);
+          padding: var(--spacing-1);
         }
-        /* Remove display: none to keep Usage Examples visible */
         .usage {
           display: table-cell;
-        }
-        /* Adjust font size for better readability */
-        .usage {
-          font-size: var(--font-size-xs);
+          font-size: var(--font-xs);
         }
       }
 
-      /* Optional: Adjust table layout for very small screens */
       @media (max-width: 400px) {
         table {
           min-width: 400px;
         }
         th,
         td {
-          padding: var(--space-xs);
+          padding: var(--spacing-1);
         }
         .usage {
           max-width: 100px;
@@ -175,7 +167,6 @@ export class ColorPalette extends LitElement {
     `,
   ];
 
-  // Define an array of color objects including usage examples and hex codes
   private colors = [
     {
       name: "black",
@@ -291,11 +282,6 @@ export class ColorPalette extends LitElement {
     },
   ];
 
-  /**
-   * Copies the provided hex code to the clipboard and provides feedback.
-   * @param hex The hex code to copy.
-   * @param tooltipId The ID of the tooltip element for feedback.
-   */
   private copyToClipboard(hex: string, tooltipId: string) {
     navigator.clipboard.writeText(hex).then(
       () => {
