@@ -9,7 +9,12 @@ export class TypographyPalette extends LitElement {
     typography,
     colorPalette,
     css`
-      .palette {
+      :host {
+        display: block;
+        box-sizing: border-box;
+      }
+
+      .palette-wrapper {
         width: 100%;
         padding: var(--spacing-4);
         background-color: var(--basic-white);
@@ -19,15 +24,15 @@ export class TypographyPalette extends LitElement {
       }
 
       h2 {
-        font-size: var(--font-2xl);
-        margin-bottom: var(--spacing-2);
+        font-size: var(--font-3xl);
+        margin-bottom: var(--spacing-4);
         text-align: center;
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 640px;
+        min-width: 720px;
       }
 
       th,
@@ -35,35 +40,40 @@ export class TypographyPalette extends LitElement {
         padding: var(--spacing-2);
         text-align: center;
         border: 1px solid var(--basic-gray);
-        position: relative;
       }
 
       th {
         background-color: var(--basic-gray);
         color: var(--basic-white);
+        font-weight: var(--font-bold);
       }
 
-      .typography-box {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
+      tr:nth-child(even) td {
+        background-color: var(--light-basic-white);
+      }
+
+      .preview-container {
+        display: inline-block;
+        padding: var(--spacing-2);
         border: 1px solid var(--basic-gray);
         border-radius: 4px;
-        padding: var(--spacing-2);
         cursor: pointer;
         transition:
           transform 0.3s ease,
           box-shadow 0.3s ease;
+        position: relative;
       }
 
-      .typography-box:hover,
-      .typography-box:focus {
+      .preview-container:hover,
+      .preview-container:focus {
         transform: scale(1.02);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        outline: none;
       }
 
       .tooltip {
         visibility: hidden;
+        opacity: 0;
         width: max-content;
         background-color: var(--basic-white);
         color: var(--basic-black);
@@ -71,20 +81,14 @@ export class TypographyPalette extends LitElement {
         border-radius: 4px;
         padding: 4px 8px;
         position: absolute;
-        z-index: 1;
-        bottom: 125%;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
-        opacity: 0;
         transition: opacity 0.3s;
         font-size: var(--font-xs);
+        border: 1px solid var(--basic-gray);
         pointer-events: none;
-      }
-
-      .typography-box:hover .tooltip,
-      .typography-box:focus .tooltip {
-        visibility: visible;
-        opacity: 1;
+        z-index: 1;
       }
 
       .tooltip::after {
@@ -93,47 +97,65 @@ export class TypographyPalette extends LitElement {
         top: 100%;
         left: 50%;
         transform: translateX(-50%);
-        border-width: 5px;
-        border-style: solid;
-        border-color: var(--basic-white) transparent transparent transparent;
+        border: 5px solid transparent;
+        border-top-color: var(--basic-white);
+      }
+
+      .preview-container:hover .tooltip,
+      .preview-container:focus .tooltip {
+        visibility: visible;
+        opacity: 1;
       }
 
       @media (prefers-color-scheme: dark) {
-        .palette {
+        .palette-wrapper {
           background-color: var(--dark-basic-black);
           color: var(--dark-basic-white);
         }
         th {
           background-color: var(--dark-basic-gray);
+          color: var(--dark-basic-white);
         }
         th,
         td {
           border: 1px solid var(--dark-basic-gray);
         }
-        .typography-box {
+        tr:nth-child(even) td {
+          background-color: var(--dark-basic-black);
+        }
+
+        .preview-container {
           border: 1px solid var(--dark-basic-silver);
         }
-        .typography-box:hover,
-        .typography-box:focus {
+        .preview-container:hover,
+        .preview-container:focus {
           box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
         }
         .tooltip {
           background-color: var(--dark-basic-black);
           color: var(--dark-basic-white);
+          border: 1px solid var(--dark-basic-gray);
         }
         .tooltip::after {
-          border-color: var(--dark-basic-black) transparent transparent
-            transparent;
+          border-top-color: var(--dark-basic-black);
+        }
+      }
+
+      @media (max-width: 800px) {
+        table {
+          min-width: 640px;
         }
       }
 
       @media (max-width: 600px) {
-        .typography-box {
-          max-width: 220px;
-          padding: var(--spacing-1);
+        .palette-wrapper {
+          padding: var(--spacing-3);
         }
         th,
         td {
+          padding: var(--spacing-1);
+        }
+        .preview-container {
           padding: var(--spacing-1);
         }
       }
@@ -237,13 +259,13 @@ export class TypographyPalette extends LitElement {
 
   render() {
     return html`
-      <div class="palette">
+      <div class="palette-wrapper">
         <h2>Typography Palette</h2>
         <table>
           <thead>
             <tr>
               <th>Label</th>
-              <th>Font Size (rem/px)</th>
+              <th>Font Size (rem / px)</th>
               <th>Line Height Token</th>
               <th>Usage</th>
               <th>Preview</th>
@@ -252,49 +274,41 @@ export class TypographyPalette extends LitElement {
           <tbody>
             ${this.typographyList.map((item) => {
               const tooltipId = `tooltip-${item.label}`;
+              const styleText = `font-size: var(${item.sizeToken});line-height: var(${item.lineHeight});`;
+              const copyText = `font-size: var(${item.sizeToken}); line-height: var(${item.lineHeight});`;
+
               return html`
                 <tr>
                   <td>${item.label}</td>
                   <td>
                     <div
-                      style="display: flex; flex-direction: column; gap: var(--spacing-1); align-items:center;"
+                      style="display: flex; flex-direction: column; gap: var(--spacing-1); align-items: center;"
                     >
                       <span>${item.sizeToken}</span>
                       <span>${item.px}</span>
                     </div>
                   </td>
-                  <td>
-                    <span>${item.lineHeight}</span>
-                  </td>
+                  <td>${item.lineHeight}</td>
                   <td>${item.usage}</td>
                   <td>
-                    <div
-                      class="typography-box"
-                      style="
-                        font-size: var(${item.sizeToken});
-                        line-height: var(${item.lineHeight});
-                      "
-                      @click="${() =>
-                        this.copyToClipboard(
-                          `font-size: var(${item.sizeToken}); line-height: var(${item.lineHeight});`,
-                          tooltipId
-                        )}"
+                    <span
+                      class="preview-container"
+                      style=${styleText}
                       tabindex="0"
-                      @keypress="${(e: KeyboardEvent) => {
+                      @click=${() => this.copyToClipboard(copyText, tooltipId)}
+                      @keydown=${(e: KeyboardEvent) => {
                         if (e.key === "Enter" || e.key === " ") {
-                          this.copyToClipboard(
-                            `font-size: var(${item.sizeToken}); line-height: var(${item.lineHeight});`,
-                            tooltipId
-                          );
+                          e.preventDefault();
+                          this.copyToClipboard(copyText, tooltipId);
                         }
-                      }}"
+                      }}
                       aria-describedby=${tooltipId}
                     >
                       ${item.previewText}
-                      <span class="tooltip" id="${tooltipId}">
+                      <span class="tooltip" id=${tooltipId} aria-live="polite">
                         Click to copy
                       </span>
-                    </div>
+                    </span>
                   </td>
                 </tr>
               `;
