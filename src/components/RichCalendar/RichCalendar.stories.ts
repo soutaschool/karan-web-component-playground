@@ -1,5 +1,3 @@
-// src/RichCalendar.stories.ts
-
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { type TemplateResult, html } from "lit";
 import type { CalendarEvent } from "./interfaces";

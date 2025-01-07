@@ -1,4 +1,4 @@
-import type { Meta } from "@storybook/web-components";
+import type { Meta, StoryObj } from "@storybook/web-components";
 import "./ColorPalette";
 
 const meta: Meta = {
@@ -8,6 +8,6 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryOb;
+type Story = StoryObj;
 
 export const Default: Story = {};
